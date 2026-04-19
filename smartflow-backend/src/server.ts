@@ -1,3 +1,4 @@
+import 'dotenv/config';
 // ──────────────────────────────────────────────
 //  server.ts
 //  Main application entry point.
@@ -31,6 +32,8 @@ const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:3001',
 ].filter(Boolean) as string[];
+
+console.log('CORS Allowed Origins:', allowedOrigins);
 
 app.use(
   cors({
