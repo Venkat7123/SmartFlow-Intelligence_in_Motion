@@ -20,6 +20,10 @@ import { errorHandler } from './middleware/errorHandler';
 const app = express();
 const PORT = Number(process.env.PORT || 5001);
 
+app.get("/", (_req, res) => {
+  res.send("SmartFlow backend alive ✅");
+});
+
 // Security & Parsing Middlewares
 app.use(helmet());
 app.use(
@@ -55,8 +59,8 @@ app.use('*', (req, res) => {
 // Central Error Handler
 app.use(errorHandler);
 
-const server = app.listen(PORT, () => {
-  console.log(`🚀 SmartFlow API running on http://localhost:${PORT}`);
+const server = app.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 SmartFlow API running on port ${PORT}`);
 });
 
 server.on('error', (error: NodeJS.ErrnoException) => {
